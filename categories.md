@@ -11,7 +11,7 @@ title: Categories
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
-
+#### Linux
 ![Linux Logo]({{ site.url }}/images/linux/linux-logo.jpg "Linux Logo"){: .pull-center}
 
 Linux 相关，包括了常用的方法，以及相应的内核介绍。
@@ -66,7 +66,7 @@ Nginx 一款轻量级且高性能的 Web 服务器、反向代理服务器，通
 
 * [Bootstrap](/blog/bootstrap-etc.html)，一个来自 Twitter 的前端框架，同时包括了一些 css、javascript 相关的内容介绍。
 * [Nginx 入门](/blog/nginx-introduce.html)，介绍一些常见的操作，例如安装、启动、设置等。
--->
+
 
 
 #### Miscellaneous
@@ -77,6 +77,7 @@ Nginx 一款轻量级且高性能的 Web 服务器、反向代理服务器，通
 * [Linux 常用技巧](/blog/linux-tips.html)，简单记录了一些在 Linux 中常用的技巧。
 * [TMUX](/blog/tmux.html)，一个终端复用工具，类似 screen 但是更加方便使用，更加高端。
 * [Linux 绘图工具](/blog/linux-gnuplot.html)，这是一个命令行驱动的绘图工具，支持多个平台。
+-->
 
 <!--
 * [Linux System Daemon](/blog/linux-systemd.html)，一般新发行版本采用的是 systemd，在此简单介绍下。
@@ -93,15 +94,13 @@ MySQL 是一款最流行的开源关系型数据库，最初由瑞典的 MySQL A
 
 Percona 是最接近官方 MySQL Enterprise 发行版的版本，也就是说它提供了一些 MySQL 企业版采用的功能，并且包括了一些比较好用的常用工具。其中的缺点是，为了确保对产品中所包含功能的控制，他们自己管理代码，并不接受社区开发人员的贡献。
 
+
+<!--
 文章列表：
 
 * [MySQL 写在开头](/blog/mysql-begin.html)，主要保存一些经常使用的 MySQL 资源。
 * [MySQL 常用工具](/blog/mysql-tools.html)，一些运维过程中常见的工具，包括压测工具。
 * [MySQL 监控指标](/blog/mysql-monitor.html)，包括了一些 MySQL 常见的监控指标及其含义等。
-
-
-<!--
-
 * [MySQL 简介](/blog/mysql-introduce.html)，简单介绍 MySQL 常见的使用方法，包括安装启动、客户端使用、调试等。
 * [MySQL 基本概念](/blog/mysql-basic.html)，介绍 MySQL 中一些基本的概念，包括了 SQL、JOIN、常见测试库等。
 * [MySQL 配置文件](/blog/mysql-config.html)，关于配置相关的内容。
@@ -130,6 +129,8 @@ InnoDB:
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 
+#### Python
+
 ![Python Logo]({{ site.url }}/images/python/python-logo.png "Python Logo"){: .pull-center width="420"}
 
 通常当我们讨论 Python 时，指的是 Python 语言以及 CPython 实现。而实际上 Python 只是一种语言的规范，可以根据该规范使用不同的语言去实现相应的解析器，除了 CPython 之外，常见的还有 PyPy、Jython、IronPython、MicroPython 等。
@@ -142,28 +143,32 @@ CPython 通过 C 语言实现，也是目前使用最为广泛的版本，虽然
 
 Just More Pythonic ~~~
 
+<!--
 #### CPython
 
 记录 C 语言实现的 Python 的简介。
 
 * [Python 模块简介](/blog/python-modules.html)，简单介绍一下 Python 中的模块，以及一些常用的模块。
-* [Python 杂项](blog/python-tips.html)，记录了 Python 中常见技巧，一些乱七八糟的东西。
+-->
 
 <!--
+* [Python 杂项](blog/python-tips.html)，记录了 Python 中常见技巧，一些乱七八糟的东西。
 * [Python 的垃圾回收机制](blog/python-garbage-collection.html)，详细介绍 Python 特有的垃圾回收机制。
 * [Python 异常处理](/blog/python-exception.html)，介绍如何处理 Python 的异常。
 * [Python Greenlet](/blog/python-greenlet.html)，
 * [Python Gevent](/blog/python-gevent.html)，
 -->
 
+<!--
 #### Flask
 
 一个使用 Python 编写的轻量级 Web 应用框架，采用 BSD 授权。
 
 * [Flask 简介](/blog/flask-introduce.html)，简单介绍 flask 的安装、配置、使用，常用的三方模块等。
-* [Flask 常见示例](/blog/flask-tips.html)，包括了 Flask 中的一些常见示例，可以作为参考使用。
+-->
 
 <!--
+* [Flask 常见示例](/blog/flask-tips.html)，包括了 Flask 中的一些常见示例，可以作为参考使用。
 * [Flask 请求处理流程](/blog/flask-request-process.html)，介绍一次请求所经过的处理过程。
 * [Flask 上下文理解](/blog/flask-context.html)，主要介绍上下文、session 的使用以及源码的实现。
 * [Flask 路由控制](/blog/flask-route.html)，介绍 flask 中 URL 是如何进行路由的。
