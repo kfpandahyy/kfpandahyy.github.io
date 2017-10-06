@@ -1,5 +1,5 @@
 ---
-title: Linux工具-strace
+title: Linux 工具-strace
 layout: post
 comments: true
 language: chinese
