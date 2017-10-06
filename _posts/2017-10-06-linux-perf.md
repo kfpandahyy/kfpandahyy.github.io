@@ -2,6 +2,7 @@
 title: Linux 性能诊断工具-perf
 layout: post
 comments: true
+source: https://www.ibm.com/developerworks/cn/linux/l-cn-perf1
 language: chinese
 category: [linux]
 keywords: perf
@@ -48,7 +49,7 @@ Perf 是用来进行软件性能分析的工具。
 
 处理器处理一条指令需要分多个步骤完成，比如先取指令，然后完成运算，最后将计算结果输出到总线上。在处理器内部，这可以看作一个三级流水线，如下图所示：
 
-** 图 1. 处理器流水线 **
+图 1. 处理器流水线
 
 ![perf examples]({{ site.url }}/images/linux/perf-1.gif "an example picture")
 
@@ -86,7 +87,7 @@ Perf 将 tracepoint 产生的事件记录下来，生成报告，通过分析这
 说明一个工具的最佳途径是列举一个例子。
 考查下面这个例子程序。其中函数 longa() 是个很长的循环，比较浪费时间。函数 foo1 和 foo2 将分别调用该函数 10 次，以及 100 次。
 
-** 清单 1. 测试程序 t1 **
+清单 1. 测试程序 t1
 
 {% highlight text %}
  //test.c 
@@ -250,7 +251,7 @@ Perf top 用于实时显示当前系统的性能统计信息。该命令主要�
 
 不知道您怎么想，反正我觉得做一件有益的事情很难，但做点儿坏事儿却非常容易。我很快就想到了如代码清单 2 所示的一个程序：
 
-** 清单 2. 一个死循环 **
+清单 2. 一个死循环
 
 {% highlight text %}
 while (1) i++;
@@ -300,7 +301,7 @@ while (1) i++;
 
 结果如下图所示：
 
-** 图 2. perf report 示例 **
+图 2. perf report 示例
 
 ![perf examples]({{ site.url }}/images/linux/perf-2.jpg "an example picture")
 
@@ -330,7 +331,7 @@ while (1) i++;
 
 该例子考察程序对奔腾处理器分支预测的利用率，如前所述，分支预测能够显著提高处理器的性能，而分支预测失败则显著降低处理器的性能。首先给出一个存在 BTB 失效的例子：
 
-** 清单 3. 存在 BTB 失效的例子程序 **
+清单 3. 存在 BTB 失效的例子程序
 
 {% highlight text %}
  //test.c 
@@ -385,7 +386,7 @@ gcc – o t3 – O0 test.c
 
 for 循环编译成为 IA 汇编后如下：
 
-** 清单 4. 循环的汇编 **
+清单 4. 循环的汇编
 
 {% highlight text %}
  // C code 
@@ -407,7 +408,7 @@ for 循环编译成为 IA 汇编后如下：
 
 可以看到，每次循环迭代中都有一个分支语句 jge，因此在运行过程中将有 20 次分支判断。每次分支判断都将写入 BTB，但 BTB 是一个 ring buffer，16 个 slot 写满后便开始覆盖。假如迭代次数正好为 16，或者小于 16，则完整的循环将全部写入 BTB，比如循环迭代次数为 4 次，则 BTB 应该如下图所示：
 
-** 图 4. BTB buffer **
+图 4. BTB buffer
 
 ![perf examples]({{ site.url }}/images/linux/perf-4.jpg "an example picture")
 
@@ -415,7 +416,7 @@ for 循环编译成为 IA 汇编后如下：
 
 我们将测试程序进行少许的修改，将迭代次数从 20 减少到 10，为了让逻辑不变，j++ 变成了 j+=2；
 
-** 清单 5. 没有 BTB 失效的代码 **
+清单 5. 没有 BTB 失效的代码
 
 {% highlight text %}
  #include <stdio.h> 
