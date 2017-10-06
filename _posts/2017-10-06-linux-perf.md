@@ -49,6 +49,7 @@ Perf 是用来进行软件性能分析的工具。
 处理器处理一条指令需要分多个步骤完成，比如先取指令，然后完成运算，最后将计算结果输出到总线上。在处理器内部，这可以看作一个三级流水线，如下图所示：
 
 ** 图 1. 处理器流水线 **
+
 ![perf examples]({{ site.url }}/images/linux/perf-1.gif "an example picture")
 
 指令从左边进入处理器，上图中的流水线有三级，一个时钟周期内可以同时处理三条指令，分别被流水线的不同部分处理。
@@ -300,6 +301,7 @@ while (1) i++;
 结果如下图所示：
 
 ** 图 2. perf report 示例 **
+
 ![perf examples]({{ site.url }}/images/linux/perf-2.jpg "an example picture")
 
 不出所料，hot spot 是 longa( ) 函数。
@@ -406,6 +408,7 @@ for 循环编译成为 IA 汇编后如下：
 可以看到，每次循环迭代中都有一个分支语句 jge，因此在运行过程中将有 20 次分支判断。每次分支判断都将写入 BTB，但 BTB 是一个 ring buffer，16 个 slot 写满后便开始覆盖。假如迭代次数正好为 16，或者小于 16，则完整的循环将全部写入 BTB，比如循环迭代次数为 4 次，则 BTB 应该如下图所示：
 
 ** 图 4. BTB buffer **
+
 ![perf examples]({{ site.url }}/images/linux/perf-4.jpg "an example picture")
 
 这个 buffer 完全精确地描述了整个循环迭代的分支判定情况，因此下次运行同一个循环时，处理器便可以做出完全正确的预测。但假如迭代次数为 20，则该 BTB 随着时间推移而不能完全准确地描述该循环的分支预测执行情况，处理器将做出错误的判断。
