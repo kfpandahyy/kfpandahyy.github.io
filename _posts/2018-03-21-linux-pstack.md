@@ -13,6 +13,7 @@ description: 此命令可显示每个进程的栈跟踪。
 
 ## 示例
 
+{% highlight text %}
 pstack 4551  
 Thread 7 (Thread 1084229984 (LWP 4552)):  
 \#0  0x000000302afc63dc in epoll_wait () from /lib64/tls/libc.so.6  
@@ -66,5 +67,5 @@ Thread 1 (Thread 182894129792 (LWP 4551)):
 \#1  0x000000302af8f010 in sleep () from /lib64/tls/libc.so.6  
 \#2  0x0000000000420d79 in Ad_preprocess::run ()  
 \#3  0x0000000000450ad0 in main ()  
-
+{% endhighlight %}
 
