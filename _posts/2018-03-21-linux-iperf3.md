@@ -29,10 +29,11 @@ PATH="${ADD_PATH}:${PATH}"
 export PATH  
 ```
 
+
 ##主要参数说明
 主要参数说明
 ```
--s    表示作为 server 端接收包。  
+-s	表示作为 server 端接收包。  
 -i	间隔多久输出信息流量信息，默认单位为秒。  
 -p	指定服务的监听端口。  
 -u	表示采用 UDP 协议发送报文，不带该参数表示采用 TCP 协议  
@@ -95,6 +96,8 @@ Client specific:
 iperf3 homepage at: http://software.es.net/iperf/  
 Report bugs to:     https://github.com/esnet/iperf  
 ```
+
+
 ##用法示例
 
 server端
