@@ -5,7 +5,7 @@ comments: true
 language: chinese
 category: [linux]
 keywords: iperf3
-description: 此命令可显示每个进程的栈跟踪。
+description: 网络性能测试工具
 ---
 
 iperf3是一个网络性能测试工具。iperf3可以测试TCP和UDP带宽质量、测量最大TCP带宽，具有多种参数和UDP特性。iperf3可以报告带宽，延迟抖动和数据包丢失。利用iperf这一特性，可以用来测试一些网络设备如路由器，防火墙，交换机等的性能。
