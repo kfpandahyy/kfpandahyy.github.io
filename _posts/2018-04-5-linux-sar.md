@@ -11,18 +11,6 @@ description:
 sar（System Activity Reporter, 系统活动情况报告）: 是用于监控Linux系统各个性能的优秀工具，包括：文件的读写情况、系统调用的使用情况、磁盘I/O、CPU效率、内存使用状况、进程活动及IPC有关的活动等。
 <!-- more -->
 
-
-## netperf安装
-下载Netperf并安装，其安装后有两个工具，分别是服务端netserver和客户端netperf.
-```
-git clone https://github.com/esnet/iperf  
-wget -c "https://codeload.github.com/HewlettPackard/netperf/tar.gz/netperf-2.5.0" -O netperf-2.5.0.tar.gz
-tar -zxvf netperf-2.5.0.tar.gz
-cd netperf-netperf-2.5.0
-./configure && make && make install && cd ..
-```
-
-
 ## 参数说明
 
 sar用法
@@ -60,7 +48,6 @@ sar命令的选项很多，下面只列出常用选项：
 -w：输出系统交换活动信息
 
 ```
-
 
 ## 整体CPU使用统计(-u)
 使用-u选项，sar输出整体CPU的使用情况，不加选项时，默认使用的就是-u选项。  以下命令显示采样时间为3s，采样次数为2次，整体CPU的使用情况:
