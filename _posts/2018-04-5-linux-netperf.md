@@ -1,5 +1,5 @@
 ---
-title: Linux 网络性能工具-netperf
+title: Linux 网络性能诊断工具-netperf
 layout: post
 comments: true
 language: chinese
