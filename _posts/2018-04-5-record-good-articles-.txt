@@ -1,0 +1,23 @@
+---
+title: Hello World !!!
+layout: post
+comments: true
+language: chinese
+category: [misc]
+keywords: 记录好的博客或文章
+description: 好的博客
+---
+
+记录值得关注与学习的博客。
+
+!-- more -->
+
+
+## 
+percona的博客 [https://www.percona.com/blog/](https://www.percona.com/blog/ "Title")  
+淘宝内核月报  [http://mysql.taobao.org/monthly/](http://mysql.taobao.org/monthly/ "Title")  
+News from the MySQL High Availability Team [https://mysqlhighavailability.com/](https://mysqlhighavailability.com/ "Title")  
+
+
+## 好文章 
+MySQL内存占用  [https://www.percona.com/blog/2014/01/24/mysql-server-memory-usage-2/](https://www.percona.com/blog/2014/01/24/mysql-server-memory-usage-2/ "Title")  
