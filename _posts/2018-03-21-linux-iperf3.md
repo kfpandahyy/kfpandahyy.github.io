@@ -30,7 +30,7 @@ export PATH
 ```
 
 
-##主要参数说明
+## 主要参数说明
 主要参数说明
 ```
 -s	表示作为 server 端接收包。  
@@ -98,7 +98,7 @@ Report bugs to:     https://github.com/esnet/iperf
 ```
 
 
-##用法示例
+## 用法示例
 
 server端
 ```
