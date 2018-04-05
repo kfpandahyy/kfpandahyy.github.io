@@ -13,12 +13,13 @@ iperf3是一个网络性能测试工具。iperf3可以测试TCP和UDP带宽质�
 
 
 ## iperf 安装
-###使用yum源安装
-{% highlight text %}
+使用yum源安装
+```
 yum install iperf3 -y  
-{% endhighlight %}
+```
 
-###使用源码安装
+使用源码安装
+```
 git clone https://github.com/esnet/iperf  
 cd iperf  
 ./configure && make && make install && cd ..  
@@ -26,9 +27,11 @@ cd src
 ADD_PATH="$(pwd)"  
 PATH="${ADD_PATH}:${PATH}"  
 export PATH  
+```
 
 ##主要参数说明
-###主要参数说明
+主要参数说明
+```
 -s    表示作为 server 端接收包。  
 -i	间隔多久输出信息流量信息，默认单位为秒。  
 -p	指定服务的监听端口。  
@@ -37,9 +40,10 @@ export PATH
 -b	设定流量带宽，可选单位包括：k/m/g。  
 -t	流量的持续时间，默认单位为秒。  
 -A	CPU 亲和性，可以将具体的 iperf3 进程绑定对应编号的逻辑 CPU，避免 iperf 进程在不同的 CPU 间调度。  
+```
 
-###详细帮助信息
-
+详细帮助信息
+```
 [root@panda ~]# iperf3 -h  
 Usage: iperf [-s|-c host] [options]  
        iperf [-h|--help] [-v|--version]  
@@ -90,10 +94,11 @@ Client specific:
   
 iperf3 homepage at: http://software.es.net/iperf/  
 Report bugs to:     https://github.com/esnet/iperf  
-
+```
 ##用法示例
 
-###server端
+server端
+```
 [root@panda ~]# iperf3 -s  
 -----------------------------------------------------------  
 Server listening on 5201
@@ -119,9 +124,10 @@ Accepted connection from 192.168.1.20, port 47399
 -----------------------------------------------------------
 Server listening on 5201
 -----------------------------------------------------------
+```
 
-
-###客户端
+客户端
+```
 [root@panda ~]# iperf3 -c 192.168.1.20 -l 1500
 Connecting to host 192.168.1.20, port 5201
 [  4] local 192.168.1.20 port 47400 connected to 192.168.1.20 port 5201
@@ -140,7 +146,7 @@ Connecting to host 192.168.1.20, port 5201
 [ ID] Interval           Transfer     Bandwidth       Retr
 [  4]   0.00-10.00  sec  5.55 GBytes  4.77 Gbits/sec    0             sender
 [  4]   0.00-10.00  sec  5.55 GBytes  4.77 Gbits/sec                  receiver
-
+```
 
 
 
