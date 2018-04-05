@@ -1,11 +1,11 @@
 ---
-title: Hello World !!!
+title: 好的博客或文章
 layout: post
 comments: true
 language: chinese
 category: [misc]
-keywords: 记录好的博客或文章
-description: 好的博客
+keywords: 好的博客或文章
+description: 记录好的博客或文章
 ---
 
 记录值得关注与学习的博客。
