@@ -31,6 +31,7 @@ export PATH
 
 
 ## 主要参数说明
+
 主要参数说明
 ```
 -s	表示作为 server 端接收包。  
@@ -150,20 +151,4 @@ Connecting to host 192.168.1.20, port 5201
 [  4]   0.00-10.00  sec  5.55 GBytes  4.77 Gbits/sec    0             sender
 [  4]   0.00-10.00  sec  5.55 GBytes  4.77 Gbits/sec                  receiver
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
