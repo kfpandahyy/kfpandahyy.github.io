@@ -1,5 +1,5 @@
 ---
-title: Linux 网络性能诊断工具-sar
+title: Linux 性能诊断工具-sar
 layout: post
 comments: true
 language: chinese
