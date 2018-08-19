@@ -8,15 +8,12 @@ category: [mysql]
 keywords: mysql
 description: 
 ---
-
 介绍Gtid_state类，下面是以5.7.17版本中Gtid_state类为例进行介绍。
-
-
 <!-- more -->
 
-介绍Gtid_state类，下面是以5.7.17版本中Gtid_state类为例进行介绍。
-
 ## Gtid_state类的说明
+
+```
 /**
   Represents the state of the group log: the set of logged groups, the
   set of lost groups, the set of owned groups, the owner of each owned
@@ -47,6 +44,7 @@ description:
   implies that the entire data structure is locked whereas the read
   lock implies that everything except SID-specific data is locked.
 */
+```
 
 ## Gtid_state类的成员变量
 class Gtid_state
@@ -457,7 +455,7 @@ bool warn_or_err_on_modify_gtid_table(THD *thd, TABLE_LIST *table);
 }
 
 
-
+```
 update_commit_group(THD *first_thd)
 	|-global_sid_lock->rdlock();
 	|-update_gtids_impl_lock_sidnos(first_thd); //对要提交的gtid集合涉及到的sidno加锁
@@ -509,7 +507,7 @@ update_on_rollback(THD *thd)
 
 Gtid_state::generate_automatic_gtid(THD *thd,rpl_sidno specified_sidno,rpl_gno specified_gno,rpl_sidno *locked_sidno)
 	|-
-	
+```
 	
 	
 	
