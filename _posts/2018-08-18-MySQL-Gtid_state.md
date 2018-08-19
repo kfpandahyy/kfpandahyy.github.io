@@ -47,6 +47,7 @@ description:
 ```
 
 ## Gtid_state类的成员变量
+```
 class Gtid_state
 {
 
@@ -93,10 +94,11 @@ private:
 
   ...
 }
-
+```
 
 
 ## Gtid_state类public函数
+```
 class Gtid_state
 {
 
@@ -453,8 +455,9 @@ enum_return_status generate_automatic_gtid(THD *thd,
 bool warn_or_err_on_modify_gtid_table(THD *thd, TABLE_LIST *table);
 
 }
+```
 
-
+##重点函数详解
 ```
 update_commit_group(THD *first_thd)
 	|-global_sid_lock->rdlock();
