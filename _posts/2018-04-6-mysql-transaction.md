@@ -50,6 +50,18 @@ mysql_execute_command(THD *thd, bool first_level)
 trans_commit_stmt(THD *thd)
 	|-if (thd->get_transaction()->is_active(Transaction_ctx::STMT))
 		|-res= ha_commit_trans(thd, FALSE);
+			/*
+			  Save transaction owned gtid into table before transaction prepare
+			  if binlog is disabled, or binlog is enabled and log_slave_updates
+			  is disabled with slave SQL thread or slave worker thread.
+			*/
+			|-error= commit_owned_gtids(thd, all, &need_clear_owned_gtid);
+			|-error= tc_log->commit(thd, all)
+			|-if (need_clear_owned_gtid)
+				|-if (error)
+					|-gtid_state->update_on_rollback(thd);
+				|-else
+					|-gtid_state->update_on_commit(thd);
 	|-else if (tc_log)
 		|-tc_log->commit(thd, false);
 
