@@ -510,6 +510,9 @@ update_on_rollback(THD *thd)
 
 Gtid_state::generate_automatic_gtid(THD *thd,rpl_sidno specified_sidno,rpl_gno specified_gno,rpl_sidno *locked_sidno)
 	|-
+真
+
+真 真 真
 ```
 	
 	
