@@ -1,6 +1,6 @@
 ---
 Date: August 18, 2018
-title: MySQL Gtid_state类
+title: MySQL Gtid_state
 layout: post
 comments: true
 language: chinese
@@ -8,10 +8,9 @@ category: [mysql]
 keywords: mysql
 description: 
 ---
-介绍Gtid_state类，下面是以5.7.17版本中Gtid_state类为例进行介绍。
 <!-- more -->
 
-## Gtid_state类的说明
+## Gtid_state
 
 ```
 /**
@@ -46,7 +45,7 @@ description:
 */
 ```
 
-## Gtid_state类的成员变量
+## Gtid_state
 ```
 class Gtid_state
 {
@@ -97,27 +96,21 @@ private:
 ```
 
 
-## Gtid_state类public函数
+## Gtid_state
 ```
 class Gtid_state
 {
 
-//构造函数
 Gtid_state(Checkable_rwlock *_sid_lock, Sid_map *_sid_map)
 	
-//这个函数将server_uuid保存到Gtid_state的Sid_map,并得到对应的sidno，保存到server_sidno。
 int init();
 
-//清理lost_gtids、executed_gtids、gtids_only_in_table、previous_gtids_logged这几个GTID集合
 int clear(THD *thd);
 
-//判断executed_gtids是否包含传入的gtid
 bool is_executed(const Gtid &gtid) const
 
-//返回gtid的owner
 my_thread_id get_owner(const Gtid &gtid) const
 
-//owned_gtids增加gtid. 如果thd->gtid_next_list非空，则加入gtid到其中，否则加入gtid到thd->owned_gtid
 enum_return_status acquire_ownership(THD *thd, const Gtid &gtid);
 
   /**
@@ -168,26 +161,23 @@ void update_on_commit(THD *thd);
 void update_on_rollback(THD *thd);
 
 
-//anonymous_gtid_count 值加1
-void acquire_anonymous_ownership()
+oid acquire_anonymous_ownership()
 
-//anonymous_gtid_count 值减1
 void release_anonymous_ownership()
 
-//返回anonymous_gtid_count值
 int32 get_anonymous_ownership_count()
 
   /**
     Increase the global counter when starting a GTID-violating
     transaction having GTID_NEXT=AUTOMATIC.
-	automatic_gtid_violation_count 的值加1
+	automatic_gtid_violation_count 
   */
 void begin_automatic_gtid_violating_transaction()
 
   /**
     Decrease the global counter when ending a GTID-violating
     transaction having GTID_NEXT=AUTOMATIC.
-	automatic_gtid_violation_count 值减1
+	automatic_gtid_violation_count 
   */
 void end_automatic_gtid_violating_transaction()
 
@@ -201,14 +191,14 @@ int32 get_automatic_gtid_violating_transaction_count()
   /**
     Increase the global counter when starting a GTID-violating
     transaction having GTID_NEXT=ANONYMOUS.
-	anonymous_gtid_violation_count 值加1
+	anonymous_gtid_violation_count 
   */
 void begin_anonymous_gtid_violating_transaction()
 
   /**
     Decrease the global counter when ending a GTID-violating
     transaction having GTID_NEXT=ANONYMOUS.
-	anonymous_gtid_violation_count 值减1
+	anonymous_gtid_violation_count
   */
 void end_anonymous_gtid_violating_transaction()
 
@@ -219,7 +209,7 @@ void end_gtid_violating_transaction(THD *thd);
   /**
     Return the number of ongoing GTID-violating transactions having
     GTID_NEXT=AUTOMATIC.
-	返回 anonymous_gtid_violation_count 值
+	anonymous_gtid_violation_count
   */
 int32 get_anonymous_gtid_violating_transaction_count()
   
@@ -457,28 +447,27 @@ bool warn_or_err_on_modify_gtid_table(THD *thd, TABLE_LIST *table);
 }
 ```
 
-##重点函数详解
+##A
 ```
 update_commit_group(THD *first_thd)
 	|-global_sid_lock->rdlock();
-	|-update_gtids_impl_lock_sidnos(first_thd); //对要提交的gtid集合涉及到的sidno加锁
+	|-update_gtids_impl_lock_sidnos(first_thd); 
 	|-for (THD *thd= first_thd; thd != NULL; thd= thd->next_to_commit)
 		|-bool is_commit= (thd->commit_error != THD::CE_COMMIT_ERROR);
-		//如果要提交的GTID是空的，则跳过这个GTID。如果提交有错误会回滚这个GTID，也跳过这个GTID
 		|-if (update_gtids_impl_do_nothing(thd) ||
 			(!is_commit && update_gtids_impl_check_skip_gtid_rollback(thd)))
 			|-continue;
 		|-bool more_trx_with_same_gtid_next= update_gtids_impl_begin(thd); //返回thd->is_commit_in_middle_of_statement
 		|-if (thd->owned_gtid.sidno == THD::OWNED_SIDNO_GTID_SET)
-			|-update_gtids_impl_own_gtid_set(thd, is_commit); //提交GTID集合
+			|-update_gtids_impl_own_gtid_set(thd, is_commit);
 		|-else if (thd->owned_gtid.sidno > 0)
-			|-update_gtids_impl_own_gtid(thd, is_commit);	//提交一个GTID
+			|-update_gtids_impl_own_gtid(thd, is_commit);
 		|-else if (thd->owned_gtid.sidno == THD::OWNED_SIDNO_ANONYMOUS)
 			|-update_gtids_impl_own_anonymous(thd, &more_trx_with_same_gtid_next);	//提交匿名GTID
 		|-else
-			|-update_gtids_impl_own_nothing(thd);	//什么也不做
+			|-update_gtids_impl_own_nothing(thd);	
 		|-update_gtids_impl_end(thd, more_trx_with_same_gtid_next);
-	|-update_gtids_impl_broadcast_and_unlock_sidnos(); //对涉及到的sidno释放锁
+	|-update_gtids_impl_broadcast_and_unlock_sidnos(); 
 	|-global_sid_lock->unlock();
 	|-DBUG_VOID_RETURN;
 
@@ -489,16 +478,16 @@ update_on_commit(THD *thd)
 			|-DBUG_VOID_RETURN;
 		|-bool more_trx_with_same_gtid_next= update_gtids_impl_begin(thd);
 		|-if (thd->owned_gtid.sidno == THD::OWNED_SIDNO_GTID_SET)
-			|-update_gtids_impl_own_gtid_set(thd, is_commit);//提交GTID集合
+			|-update_gtids_impl_own_gtid_set(thd, is_commit);
 		|-else if (thd->owned_gtid.sidno > 0)
 			|-rpl_sidno sidno= thd->owned_gtid.sidno;
 			|-update_gtids_impl_lock_sidno(sidno);
-			|-update_gtids_impl_own_gtid(thd, is_commit);//提交一个GTID
+			|-update_gtids_impl_own_gtid(thd, is_commit);
 			|=update_gtids_impl_broadcast_and_unlock_sidno(sidno);
 		|-else if (thd->owned_gtid.sidno == THD::OWNED_SIDNO_ANONYMOUS)
 			|-update_gtids_impl_own_anonymous(thd, &more_trx_with_same_gtid_next);//提交匿名GTID
 		|-else
-			|-update_gtids_impl_own_nothing(thd);//什么也不做
+			|-update_gtids_impl_own_nothing(thd);
 		|-update_gtids_impl_end(thd, more_trx_with_same_gtid_next);
 		|-DBUG_VOID_RETURN;
 
@@ -510,9 +499,7 @@ update_on_rollback(THD *thd)
 
 Gtid_state::generate_automatic_gtid(THD *thd,rpl_sidno specified_sidno,rpl_gno specified_gno,rpl_sidno *locked_sidno)
 	|-
-靠
 
-靠 靠 靠
 ```
 	
 	
