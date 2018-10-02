@@ -47,7 +47,6 @@ event
 | mysql-bin.000003 | 375 | Query          |         1 |         458 | drop database db1                                                 |
 ```
 
-
 # INNODB
 ## CREATE TABLE
 
@@ -86,7 +85,6 @@ event
 | mysql-bin.000003 | 1434 | Write_rows     |         1 |        1474 | table_id: 109 flags: STMT_END_F                                   |
 | mysql-bin.000003 | 1474 | Xid            |         1 |        1505 | COMMIT /* xid=30 */                                               |
 ```
-
 
 
 ## DROP TABLE
